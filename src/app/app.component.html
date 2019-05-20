@@ -18,12 +18,17 @@
     </div>
     <div class="col-md-6">
       <div *ngIf="weather" class="card card-body">
-        <p>Temperature: {{ weather.main.temp }}</p>
+        <h1>{{ weather.name }} - {{ weather.sys.country }}</h1>
+        <p>Temperature: {{ weather.main.temp }} ºC</p>
         <p>Longitude: {{ weather.coord.lon }}</p>
         <p>Latitude: {{ weather.coord.lat }}</p>
         <p>Humidity: {{ weather.main.humidity }}</p>
         <p>Pressure: {{ weather.main.pressure }}</p>
         <p>Description: {{ weather.weather[0].description }}</p>
+      </div>
+      <div *ngIf="weatherError" class="card card-body">
+        <h1>Ups!</h1>
+        <p> {{ weatherError }}</p>
       </div>
     </div>
   </div>

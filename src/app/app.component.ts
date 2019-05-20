@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   // al inicio indefinido, la cargaremos como respuesta 
   // weather = undefined;
   weather;
+  weatherError;
 
   // instanciamos el servicio
   constructor(private weatherService: WeatherService){
@@ -27,10 +28,15 @@ export class AppComponent implements OnInit{
     .subscribe(
       res => {
         console.log(res);
-        this.weather = res
+        this.weather = res;
+        this.weatherError = '';
       },
-      err => console.log(err)
-      // TODO show error en vista
+      err => {
+        console.log(err);
+        // this.weatherError = err.statusText;
+        this.weatherError = cityName + ' ' + err.error.message;
+        this.weather = '';
+      }
     );
 
   }

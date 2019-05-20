@@ -17,7 +17,7 @@ export class WeatherService {
     // 'https://api.openweathermap.org/data/2.5/weather?appid=257a60a60107ab69e222025ddecee0f5&q=london,uk';
     // concatenamos con commillas especiales TODO 
     //this.URI = `https://api.openweathermap.org/data/2.5/weather?appid=${this.apiKey}&q=`;
-    this.URI = 'https://api.openweathermap.org/data/2.5/weather?appid=257a60a60107ab69e222025ddecee0f5&q=';
+    this.URI = 'https://api.openweathermap.org/data/2.5/weather?appid=257a60a60107ab69e222025ddecee0f5&units=metric&q=';
    }
 
    // método para obtener el clima pasándole los parámetros
