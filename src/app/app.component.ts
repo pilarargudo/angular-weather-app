@@ -37,14 +37,19 @@ export class AppComponent implements OnInit{
 
 
  submitLocation(cityName: HTMLInputElement, countryCode: HTMLInputElement){
+   // pequeña validación
+   if(cityName.value && countryCode.value) {
 
     this.getWeather(cityName.value, countryCode.value);
     console.log(cityName.value, countryCode.value);
     // reinicio form
     cityName.value = '';
     countryCode.value = '';
-    cityName.focus();
 
+   } else {
+     alert('Please, insert values');
+   }
+   cityName.focus();
     // para que no se reinicie al hacer click en el button
     return false;
   }
