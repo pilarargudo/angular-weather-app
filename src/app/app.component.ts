@@ -20,4 +20,16 @@ export class AppComponent implements OnInit{
       err => console.log(err)
     );
   }
+
+
+  submitLocation(cityName: HTMLInputElement, countryCode: HTMLInputElement){
+    console.log(cityName.value, countryCode.value);
+    // reinicio form
+    cityName.value = '';
+    countryCode.value = '';
+    cityName.focus();
+
+    // para que no se reinicie al hacer click en el button
+    return false;
+  }
 }
