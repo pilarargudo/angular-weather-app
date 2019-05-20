@@ -8,21 +8,37 @@ import { WeatherService} from './services/weather.service';
 })
 export class AppComponent implements OnInit{
 
+  // creaamos propiedad, almacenamos en el estado de la aplicación temporalmente
+  // al inicio indefinido, la cargaremos como respuesta 
+  // weather = undefined;
+  weather;
+
   // instanciamos el servicio
   constructor(private weatherService: WeatherService){
   }
 
   // llamamos al servicio, añadimos método ngOninit para cargarlo al inicio
   ngOnInit(){
-    this.weatherService.getWeather('london', 'uk')
+  }
+
+  // para llamarlo al método más de una vez y no solo en el inicio
+  getWeather(cityName: string, countryCode: string){
+    this.weatherService.getWeather(cityName, countryCode)
     .subscribe(
-      res => console.log(res),
+      res => {
+        console.log(res);
+        this.weather = res
+      },
       err => console.log(err)
+      // TODO show error en vista
     );
+
   }
 
 
-  submitLocation(cityName: HTMLInputElement, countryCode: HTMLInputElement){
+ submitLocation(cityName: HTMLInputElement, countryCode: HTMLInputElement){
+
+    this.getWeather(cityName.value, countryCode.value);
     console.log(cityName.value, countryCode.value);
     // reinicio form
     cityName.value = '';
